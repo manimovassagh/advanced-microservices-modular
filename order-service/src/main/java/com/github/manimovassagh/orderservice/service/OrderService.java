@@ -8,6 +8,7 @@ import com.github.manimovassagh.orderservice.model.Order;
 import com.github.manimovassagh.orderservice.model.OrderLineItems;
 import com.github.manimovassagh.orderservice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -22,7 +23,8 @@ import java.util.UUID;
 public class OrderService {
 
     private final OrderRepository orderRepository;
-    private final WebClient webClient;
+    @Autowired
+    private  WebClient webClient;
 
     public void placeOrder(OrderRequest orderRequest) {
         Order order = new Order();
