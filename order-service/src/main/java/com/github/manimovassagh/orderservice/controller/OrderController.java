@@ -22,6 +22,9 @@ public class OrderController {
     }
 
 
-
+    @GetMapping("/test")
+    public String test() {
+        return "test";
+    }
 
 }

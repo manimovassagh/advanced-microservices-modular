@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class OrderLineItemsDto {
     private Long id;
     private String skuCode;
