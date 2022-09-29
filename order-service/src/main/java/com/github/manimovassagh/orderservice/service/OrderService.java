@@ -31,10 +31,16 @@ public class OrderService {
                 .toList();
 
         order.setOrderLineItemsList(orderLineItems);
+        List<String> skuCodes = order.getOrderLineItemsList()
+                .stream()
+                .map(OrderLineItems::getSkuCode)
+                .toList();
         //call inventory service
         //place order if the order is in stock
 
-        Boolean result = webClient.get().uri("http://localhost:8082/api/inventory")
+        Boolean result = webClient.get().uri("http://localhost:8082/api/inventory",
+                        uriBuilder -> uriBuilder.queryParam("skuCode",skuCodes)
+                                .build())
                 .retrieve()
                 .bodyToMono(boolean.class)
                 .block();
