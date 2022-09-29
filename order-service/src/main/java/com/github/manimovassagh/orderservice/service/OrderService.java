@@ -8,8 +8,6 @@ import com.github.manimovassagh.orderservice.model.Order;
 import com.github.manimovassagh.orderservice.model.OrderLineItems;
 import com.github.manimovassagh.orderservice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
