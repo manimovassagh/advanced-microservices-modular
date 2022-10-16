@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "6f42c527-059d-4469-8e08-10a3f602e241",
+		"name": "Microservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13877790"
+	},
+	"item": [
+		{
+			"name": "Inventory service",
+			"item": [
+				{
+					"name": "get sku code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Inventorty-service-Base-URL}}/api/inventory/?skuCode=iphone_13",
+							"host": [
+								"{{Inventorty-service-Base-URL}}"
+							],
+							"path": [
+								"api",
+								"inventory",
+								""
+							],
+							"query": [
+								{
+									"key": "skuCode",
+									"value": "iphone_13"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get sku code Multiple",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Inventorty-service-Base-URL}}/api/inventory/?skuCode=iphone_13&skuCode=iphone_13_red",
+							"host": [
+								"{{Inventorty-service-Base-URL}}"
+							],
+							"path": [
+								"api",
+								"inventory",
+								""
+							],
+							"query": [
+								{
+									"key": "skuCode",
+									"value": "iphone_13"
+								},
+								{
+									"key": "skuCode",
+									"value": "iphone_13_red"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order service",
+			"item": [
+				{
+					"name": "Place new Order That is not in stock",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \n\"orderLineItemsDtoList\":[\n{\n\"skuCode\":\"iphone_13\",\n\"price\":1200,\n\"quantity\":1\n},\n{\n\"skuCode\":\"iphone_13_red\",\n\"price\":1200,\n\"quantity\":1\n}\n]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Order-service-Base-URL}}/api/order",
+							"host": [
+								"{{Order-service-Base-URL}}"
+							],
+							"path": [
+								"api",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Place new Order Happy Path",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderLineItemsDtoList\":[\n{\n\"skuCode\":\"Samsung_s21\",\n\"price\":{{$randomPrice}},\n\"quantity\":1\n}\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Order-service-Base-URL}}/api/order",
+							"host": [
+								"{{Order-service-Base-URL}}"
+							],
+							"path": [
+								"api",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Order-service-Base-URL}}/api/order/test",
+							"host": [
+								"{{Order-service-Base-URL}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"test"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product service",
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post a Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\":\"Iphone 13\",\n\"description\":\"latest Iphone 13\",\n\"price\":1200\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

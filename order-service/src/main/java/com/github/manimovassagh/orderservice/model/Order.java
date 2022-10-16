@@ -23,4 +23,8 @@ public class Order {
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderLineItems> orderLineItemsList;
 
+    @PostLoad
+    public void postLoad() {
+
+    }
 }
